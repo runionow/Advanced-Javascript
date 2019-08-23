@@ -1,6 +1,6 @@
 var person = new Object();
 
-
+// Enumberable, Configurable, writable 
 person = {
     "address" : "Santa Clara",
     "displayName1" : function() {
@@ -24,16 +24,23 @@ Object.defineProperty(person,"lastName", {
 
 
 Object.defineProperty(person, "displayName", {
-    
     value: function() {
         return this.lastName;
     } ,
     enumerable: true,
  });
 
-//  for(var i in person) {
-//      console.log(i);
-//  }
+ // Getter and setter
+Object,defineProperty(person, "fullName", {
+    get: function() {
+        return this.firstName+" "+this.lastName;
+    },
+    set: function(value) {
+        var splitValue = value.split(" ");
+        this.firstName = splitValue[0];
+        this.lastName = splitValue[1];
+    }
+});
 
  person.firstName = "Varun";
 
